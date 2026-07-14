@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Send for Review - Screen Flow Mockup</title>
+  <style>
+    :root{
+      --slds-blue:#0176d3;
+      --slds-blue-dark:#014486;
+      --slds-bg:#f3f3f3;
+      --slds-card:#ffffff;
+      --slds-border:#dddbda;
+      --slds-text:#181818;
+      --slds-muted:#706e6b;
+      --success:#2e844a;
+      --warning:#fe9339;
+      --error:#ba0517;
+      --neutral:#747474;
+      --soft-blue:#eef4ff;
+      --soft-green:#eaf8ef;
+      --soft-orange:#fff3e0;
+      --soft-red:#fdebea;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background:var(--slds-bg);
+      color:var(--slds-text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .shell{
+      max-width:1080px;
+      margin:28px auto;
+      padding:0 20px 40px;
+    }
+
+    .flow-container{
+      background:var(--slds-card);
+      border:1px solid var(--slds-border);
+      border-radius:12px;
+      box-shadow:0 2px 10px rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+
+    .flow-header{
+      padding:18px 22px;
+      border-bottom:1px solid var(--slds-border);
+      background:linear-gradient(180deg,#fff,#f7f9fb);
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:flex-start;
+    }
+
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      color:var(--slds-muted);
+      font-size:11px;
+      font-weight:700;
+      margin-bottom:6px;
+    }
+
+    h1{
+      margin:0 0 6px;
+      font-size:24px;
+      color:#032d60;
+    }
+
+    .subtitle{
+      margin:0;
+      color:var(--slds-muted);
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    .badge{
+      border-radius:999px;
+      padding:7px 12px;
+      font-size:12px;
+      font-weight:700;
+      white-space:nowrap;
+      background:var(--soft-blue);
+      color:var(--slds-blue-dark);
+      border:1px solid #cfe2ff;
+    }
+
+    .content{
+      padding:20px 22px 22px;
+    }
+
+    .record-banner{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .field{
+      background:#f8f8f8;
+      border:1px solid #ecebea;
+      border-radius:8px;
+      padding:10px 12px;
+    }
+
+    .label{
+      color:var(--slds-muted);
+      font-size:11px;
+      margin-bottom:4px;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+    }
+
+    .value{
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .section{
+      border:1px solid var(--slds-border);
+      border-radius:10px;
+      background:#fff;
+      margin-bottom:16px;
+      overflow:hidden;
+    }
+
+    .section-title{
+      padding:12px 16px;
+      background:#fafaf9;
+      border-bottom:1px solid var(--slds-border);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+
+    h2{
+      margin:0;
+      font-size:16px;
+      color:#032d60;
+    }
+
+    .section-body{
+      padding:14px 16px 16px;
+    }
+
+    .policy-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .policy-card{
+      border:1px solid var(--slds-border);
+      border-radius:10px;
+      padding:14px;
+      background:#fff;
+      min-height:116px;
+    }
+
+    .policy-top{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      margin-bottom:10px;
+    }
+
+    .icon{
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      flex:0 0 auto;
+    }
+
+    .icon.green{ background:var(--soft-green); color:var(--success); }
+    .icon.orange{ background:var(--soft-orange); color:#8a4b00; }
+    .icon.blue{ background:var(--soft-blue); color:var(--slds-blue); }
+
+    .policy-name{
+      font-weight:700;
+      margin-bottom:3px;
+    }
+
+    .policy-meta{
+      color:var(--slds-muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+
+    .result-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .metric{
+      border:1px solid var(--slds-border);
+      border-radius:10px;
+      padding:14px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      background:#fff;
+    }
+
+    .metric-number{
+      font-size:22px;
+      font-weight:800;
+      line-height:1;
+    }
+
+    .metric-label{
+      color:var(--slds-muted);
+      font-size:12px;
+      margin-top:3px;
+    }
+
+    .check-list{
+      display:grid;
+      gap:10px;
+    }
+
+    .check-item{
+      display:grid;
+      grid-template-columns:28px 1fr auto;
+      gap:10px;
+      align-items:center;
+      padding:12px;
+      border:1px solid #ecebea;
+      border-radius:8px;
+      background:#fff;
+    }
+
+    .check-title{
+      font-weight:700;
+      font-size:13px;
+    }
+
+    .check-detail{
+      color:var(--slds-muted);
+      font-size:12px;
+      margin-top:3px;
+    }
+
+    .tag{
+      border-radius:999px;
+      padding:5px 9px;
+      font-size:11px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .tag.success{ background:var(--soft-green); color:var(--success); }
+    .tag.warning{ background:var(--soft-orange); color:#8a4b00; }
+    .tag.error{ background:var(--soft-red); color:var(--error); }
+    .tag.neutral{ background:#f3f3f3; color:var(--neutral); }
+
+    .callout{
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid #f5c518;
+      background:#fff8e6;
+      color:#604600;
+      font-size:13px;
+      line-height:1.45;
+      margin-top:14px;
+    }
+
+    .footer{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:16px 22px;
+      border-top:1px solid var(--slds-border);
+      background:#fafaf9;
+    }
+
+    .button-row{
+      display:flex;
+      gap:10px;
+    }
+
+    button{
+      border-radius:8px;
+      border:1px solid var(--slds-border);
+      padding:10px 16px;
+      font-weight:700;
+      cursor:pointer;
+      background:#fff;
+    }
+
+    .primary{
+      background:var(--slds-blue);
+      color:#fff;
+      border-color:var(--slds-blue);
+    }
+
+    .secondary{
+      color:var(--slds-blue);
+      border-color:var(--slds-blue);
+    }
+
+    .foot-note{
+      color:var(--slds-muted);
+      font-size:12px;
+    }
+
+    @media(max-width:900px){
+      .record-banner,.policy-grid,.result-grid{ grid-template-columns:1fr; }
+      .flow-header,.footer{ flex-direction:column; align-items:stretch; }
+      .button-row{ justify-content:flex-end; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="flow-container" aria-label="Send to Review Screen Flow Mockup">
+      <header class="flow-header">
+        <div>
+          <div class="eyebrow">Screen Flow</div>
+          <h1>Send to Review</h1>
+          <p class="subtitle">The system identifies applicable governance policies, evaluates their review items, and shows the readiness result before submission.</p>
+        </div>
+        <div class="badge">Pre-Review Complete</div>
+      </header>
+
+      <div class="content">
+        <section class="record-banner" aria-label="Current record context">
+          <div class="field">
+            <div class="label">Evaluated Record</div>
+            <div class="value">WO-104829</div>
+          </div>
+          <div class="field">
+            <div class="label">Object</div>
+            <div class="value">Work Order</div>
+          </div>
+          <div class="field">
+            <div class="label">Current Status</div>
+            <div class="value">Ready for Billing</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">
+            <h2>Applicable Policies</h2>
+            <span class="tag neutral">Detected automatically</span>
+          </div>
+          <div class="section-body">
+            <div class="policy-grid">
+              <article class="policy-card">
+                <div class="policy-top">
+                  <div class="icon blue">1</div>
+                  <div>
+                    <div class="policy-name">Work Order Billing Review</div>
+                    <div class="policy-meta">Applies when a Work Order is ready to move into a billable status.</div>
+                  </div>
+                </div>
+                <span class="tag success">8 Review Items</span>
+              </article>
+
+              <article class="policy-card">
+                <div class="policy-top">
+                  <div class="icon orange">2</div>
+                  <div>
+                    <div class="policy-name">Service Line Validation</div>
+                    <div class="policy-meta">Applies to EV Services records that require operational validation.</div>
+                  </div>
+                </div>
+                <span class="tag warning">3 Review Items</span>
+              </article>
+
+              <article class="policy-card">
+                <div class="policy-top">
+                  <div class="icon green">3</div>
+                  <div>
+                    <div class="policy-name">Evidence Requirements</div>
+                    <div class="policy-meta">Applies when supporting evidence is required by policy rules.</div>
+                  </div>
+                </div>
+                <span class="tag success">2 Review Items</span>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">
+            <h2>Pre-Review Results</h2>
+            <span class="tag neutral">System evaluated review items</span>
+          </div>
+          <div class="section-body">
+            <div class="result-grid">
+              <div class="metric">
+                <div class="icon green">✓</div>
+                <div>
+                  <div class="metric-number">10</div>
+                  <div class="metric-label">Passed</div>
+                </div>
+              </div>
+              <div class="metric">
+                <div class="icon orange">!</div>
+                <div>
+                  <div class="metric-number">3</div>
+                  <div class="metric-label">Manual Review</div>
+                </div>
+              </div>
+              <div class="metric">
+                <div class="icon green">0</div>
+                <div>
+                  <div class="metric-number">0</div>
+                  <div class="metric-label">Failed</div>
+                </div>
+              </div>
+              <div class="metric">
+                <div class="icon blue">13</div>
+                <div>
+                  <div class="metric-number">13</div>
+                  <div class="metric-label">Total Items</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="check-list">
+              <div class="check-item">
+                <div class="icon green">✓</div>
+                <div>
+                  <div class="check-title">Required billing fields are populated</div>
+                  <div class="check-detail">The system confirmed required fields for billing readiness.</div>
+                </div>
+                <span class="tag success">Passed</span>
+              </div>
+
+              <div class="check-item">
+                <div class="icon green">✓</div>
+                <div>
+                  <div class="check-title">Work Order has an eligible service line</div>
+                  <div class="check-detail">The record matches the policy criteria for EV Services.</div>
+                </div>
+                <span class="tag success">Passed</span>
+              </div>
+
+              <div class="check-item">
+                <div class="icon orange">!</div>
+                <div>
+                  <div class="check-title">Billing discrepancy review required</div>
+                  <div class="check-detail">This item cannot be fully evaluated by the system and must be reviewed manually.</div>
+                </div>
+                <span class="tag warning">Manual Review</span>
+              </div>
+
+              <div class="check-item">
+                <div class="icon orange">!</div>
+                <div>
+                  <div class="check-title">Supporting evidence must be reviewed</div>
+                  <div class="check-detail">Evidence requirements are policy-driven and must be confirmed by the reviewer.</div>
+                </div>
+                <span class="tag warning">Manual Review</span>
+              </div>
+            </div>
+
+            <div class="callout">
+              The system has completed the pre-review assessment. Submitting this record will create a Governance Review for the applicable policies and route it to the configured reviewer or approval queue.
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <div class="foot-note">No policy selection or submitter comments are required. Policies and review items are determined by configuration.</div>
+        <div class="button-row">
+          <button class="secondary">Cancel</button>
+          <button class="primary">Submit for Review</button>
+        </div>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Guided Response Screen Flow Mockup</title>
+<style>
+:root {
+  --blue:#0176d3; --dark:#032d60; --bg:#f3f3f3; --border:#dddbda;
+  --text:#181818; --muted:#706e6b; --success:#2e844a; --warning:#8c4b02;
+  --card:#ffffff; --soft-blue:#eef4ff; --soft-green:#e3fcef; --soft-yellow:#fff8e6;
+}
+* { box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; }
+body { margin:0; background:var(--bg); color:var(--text); }
+.shell { max-width:980px; margin:28px auto; padding:0 20px 40px; }
+.modal {
+  background:var(--card); border:1px solid var(--border); border-radius:12px;
+  box-shadow:0 8px 28px rgba(0,0,0,.12); overflow:hidden;
+}
+.modal-header {
+  display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+  padding:20px 22px; border-bottom:1px solid var(--border);
+}
+.eyebrow { color:var(--muted); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; }
+h1 { margin:5px 0 6px; color:var(--dark); font-size:24px; }
+h2 { margin:0 0 12px; color:var(--dark); font-size:18px; }
+.note { margin:0; color:var(--muted); font-size:13px; line-height:1.45; }
+.case-pill {
+  background:var(--soft-blue); color:var(--blue); border-radius:999px;
+  padding:7px 12px; font-size:12px; font-weight:700; white-space:nowrap;
+}
+.steps { display:flex; align-items:center; gap:8px; padding:14px 22px; background:#fafaf9; border-bottom:1px solid var(--border); }
+.step { display:flex; align-items:center; gap:7px; color:var(--muted); font-size:13px; font-weight:700; }
+.step .number { width:24px; height:24px; border-radius:50%; display:grid; place-items:center; background:#ecebea; }
+.step.active { color:var(--blue); }
+.step.active .number { background:var(--blue); color:#fff; }
+.connector { flex:1; height:1px; background:var(--border); }
+.modal-body { padding:22px; }
+.section {
+  border:1px solid var(--border); border-radius:10px; padding:16px; margin-bottom:16px; background:#fff;
+}
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.option {
+  display:flex; gap:11px; align-items:flex-start; padding:13px;
+  border:1px solid var(--border); border-radius:9px; cursor:pointer; background:#fff;
+}
+.option.selected { border-color:var(--blue); box-shadow:0 0 0 1px var(--blue); background:#fbfdff; }
+.option input { margin-top:3px; }
+.option-title { font-weight:700; margin-bottom:3px; }
+.help { color:var(--muted); font-size:12px; line-height:1.4; }
+.tag {
+  margin-left:auto; font-size:11px; font-weight:700; padding:4px 8px; border-radius:999px;
+  background:var(--soft-green); color:var(--success); white-space:nowrap;
+}
+.control { margin-top:12px; }
+.control label { display:block; font-size:12px; color:var(--muted); font-weight:700; margin-bottom:5px; }
+input[type=text], select, textarea {
+  width:100%; border:1px solid var(--border); border-radius:8px;
+  padding:9px 10px; font-size:13px; background:#fff;
+}
+textarea { min-height:220px; resize:vertical; line-height:1.5; }
+.preview {
+  border:1px solid var(--border); border-radius:10px; overflow:hidden; background:#fff;
+}
+.preview-header { padding:12px 14px; background:#f8f8f8; border-bottom:1px solid var(--border); font-size:13px; }
+.preview-body { padding:18px; font-size:14px; line-height:1.58; }
+.notice {
+  padding:12px; border-radius:9px; font-size:13px; line-height:1.4; margin-bottom:14px;
+  background:var(--soft-yellow); color:#604600; border:1px solid #f5c518;
+}
+.success {
+  padding:12px; border-radius:9px; font-size:13px; line-height:1.4;
+  background:var(--soft-green); color:#194e31; border:1px solid #91db8b;
+}
+.modal-footer {
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+  padding:16px 22px; border-top:1px solid var(--border); background:#fafaf9;
+}
+.footer-actions { display:flex; gap:10px; }
+button {
+  border-radius:8px; padding:9px 16px; font-weight:700; cursor:pointer;
+  border:1px solid transparent;
+}
+.primary { background:var(--blue); color:#fff; }
+.secondary { background:#fff; color:var(--blue); border-color:var(--blue); }
+.neutral { background:#fff; color:#514f4d; border-color:var(--border); }
+.hidden { display:none; }
+@media(max-width:760px){ .grid{grid-template-columns:1fr}.modal-header{flex-direction:column}.steps{align-items:flex-start}.connector{display:none} }
+</style>
+</head>
+<body>
+<div class="shell">
+  <section class="modal">
+    <header class="modal-header">
+      <div>
+        <div class="eyebrow">Service Cloud · Screen Flow</div>
+        <h1>Guided Response</h1>
+        <p class="note">Prepare a consistent response for a common support scenario.</p>
+      </div>
+      <div class="case-pill">Case 00018427</div>
+    </header>
+
+    <div class="steps">
+      <div class="step active"><span class="number">1</span>Response</div>
+      <div class="connector"></div>
+      <div class="step"><span class="number">2</span>Review Email</div>
+      <div class="connector"></div>
+      <div class="step"><span class="number">3</span>Send</div>
+    </div>
+
+    <main class="modal-body">
+      <section class="screen">
+        <div class="section">
+          <h2>Recommended Response</h2>
+          <div class="notice">
+            Salesforce identified this Case as a likely <strong>Login Issue</strong> and found matching guidance.
+            The agent can select how the information should be shared.
+          </div>
+
+          <label class="option selected">
+            <input type="radio" name="method" checked>
+            <div>
+              <div class="option-title">Insert Knowledge Content</div>
+              <div class="help">Insert short password reset instructions directly into the email.</div>
+            </div>
+            <span class="tag">Recommended</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="method">
+            <div>
+              <div class="option-title">Attach PDF</div>
+              <div class="help">Attach the printable guide associated with the Knowledge Article.</div>
+            </div>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="method">
+            <div>
+              <div class="option-title">Share SharePoint Article</div>
+              <div class="help">Include the public SharePoint URL in the generated email.</div>
+            </div>
+          </label>
+        </div>
+
+        <div class="section">
+          <h2>Matched Guidance</h2>
+          <div class="grid">
+            <div>
+              <div class="help">Scenario</div>
+              <div class="option-title">Student Account Login Issue</div>
+            </div>
+            <div>
+              <div class="help">Knowledge Article</div>
+              <div class="option-title">Password Reset for Student Accounts</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen hidden">
+        <div class="section">
+          <h2>Review Generated Email</h2>
+          <div class="control">
+            <label>Subject</label>
+            <input type="text" value="Steps to reset access to the student account">
+          </div>
+          <div class="control">
+            <label>Email Body</label>
+            <textarea>Hi Maria,
+
+Please follow these steps to reset access to the student account:
+
+1. Open the student login page.
+2. Select “Forgot Password.”
+3. Enter the email associated with the student account.
+4. Follow the instructions in the reset email.
+
+Still need help?
+
+If this does not resolve the issue, reply to this email with additional details. Your existing Case will remain active for further review.
+
+Regards,
+K12 Tutoring Support</textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen hidden">
+        <div class="section">
+          <h2>Ready to Send</h2>
+          <div class="success">
+            The response will be sent through the existing Email-to-Case thread. If the customer replies,
+            the response will remain associated with Case 00018427.
+          </div>
+          <div class="preview" style="margin-top:14px">
+            <div class="preview-header"><strong>To:</strong> Maria Gonzalez &nbsp; · &nbsp; <strong>Subject:</strong> Steps to reset access to the student account</div>
+            <div class="preview-body">
+              The selected Knowledge content and the “Still Need Help?” instructions are included in the email.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="modal-footer">
+      <button class="neutral">Cancel</button>
+      <div class="footer-actions">
+        <button id="backBtn" class="secondary">Back</button>
+        <button id="nextBtn" class="primary">Next</button>
+      </div>
+    </footer>
+  </section>
+</div>
+<script>
+const screens = [...document.querySelectorAll('.screen')];
+const steps = [...document.querySelectorAll('.step')];
+let current = 0;
+
+function showScreen(index){
+  current = index;
+  screens.forEach((s,i)=>s.classList.toggle('hidden', i!==index));
+  steps.forEach((s,i)=>s.classList.toggle('active', i===index));
+  document.getElementById('backBtn').style.visibility = index === 0 ? 'hidden' : 'visible';
+  document.getElementById('nextBtn').textContent = index === screens.length-1 ? 'Send Response' : 'Next';
+}
+
+document.querySelectorAll('.option').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));
+    el.classList.add('selected');
+    const radio = el.querySelector('input[type=radio]');
+    if(radio) radio.checked = true;
+  });
+});
+
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+  if(current < screens.length-1) showScreen(current+1);
+  else alert('Mockup only: the response would be sent from Salesforce.');
+});
+document.getElementById('backBtn').addEventListener('click', ()=>showScreen(Math.max(0,current-1)));
+showScreen(0);
+</script>
+</body>
+</html>

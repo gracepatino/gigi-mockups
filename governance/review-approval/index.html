@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Governance Review & Approval Mockup</title>
+  <style>
+    :root {
+      --blue:#0176d3; --dark:#032d60; --bg:#f3f3f3; --border:#dddbda;
+      --text:#181818; --muted:#706e6b; --success:#2e844a; --warning:#fe9339;
+      --error:#ba0517; --card:#fff; --soft-blue:#eef4ff; --soft-green:#e3fcef;
+      --soft-yellow:#fff8e6; --soft-red:#fdebea; --locked:#f4f6f9;
+    }
+    * { box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; }
+    body { margin:0; background:var(--bg); color:var(--text); }
+    .app { max-width:1220px; margin:24px auto; padding:0 20px 44px; }
+    .header,.card { background:var(--card); border:1px solid var(--border); border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+    .header { padding:22px 24px; display:flex; justify-content:space-between; gap:20px; align-items:flex-start; }
+    .eyebrow { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.06em; font-weight:700; }
+    h1 { margin:6px 0 8px; color:var(--dark); font-size:26px; }
+    h2 { margin:0 0 14px; color:var(--dark); font-size:18px; }
+    .note { color:var(--muted); font-size:13px; margin:0; line-height:1.45; }
+    .pill { border-radius:999px; padding:8px 14px; font-weight:700; font-size:13px; height:max-content; white-space:nowrap; }
+    .pill.ready { background:var(--soft-green); color:var(--success); }
+    .grid { display:grid; grid-template-columns:2fr 1fr; gap:18px; margin-top:18px; }
+    .card { padding:18px; margin-bottom:18px; }
+    .summary { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; }
+    .field { background:#f8f8f8; border:1px solid #ecebea; border-radius:8px; padding:10px 12px; min-height:62px; }
+    .label { color:var(--muted); font-size:12px; margin-bottom:4px; }
+    .value { font-size:14px; font-weight:700; line-height:1.35; }
+    .review-item { border:1px solid var(--border); border-radius:10px; padding:14px; margin-bottom:12px; background:#fff; }
+    .review-item-header { display:grid; grid-template-columns:28px 1fr auto; gap:12px; align-items:start; }
+    .checkbox { width:21px; height:21px; border:2px solid var(--blue); border-radius:4px; display:grid; place-items:center; color:var(--blue); font-weight:700; font-size:14px; background:#fff; }
+    .item-title { font-weight:700; margin-bottom:4px; }
+    .help { font-size:13px; color:var(--muted); line-height:1.35; }
+    .tag { font-size:12px; font-weight:700; padding:5px 9px; border-radius:999px; white-space:nowrap; }
+    .passed { background:var(--soft-green); color:var(--success); }
+    .manual { background:var(--soft-blue); color:var(--blue); }
+    .lockedtag { background:#ecebea; color:#514f4d; }
+    .item-controls { margin-top:14px; display:grid; grid-template-columns:180px 1fr; gap:12px; }
+    .control label { display:block; color:var(--muted); font-size:12px; margin-bottom:5px; font-weight:700; }
+    select, textarea { width:100%; border:1px solid var(--border); border-radius:8px; padding:9px 10px; font-size:13px; background:#fff; }
+    textarea { min-height:70px; resize:vertical; }
+    .evidence { margin-top:12px; border-top:1px solid #ecebea; padding-top:12px; display:flex; justify-content:space-between; gap:12px; align-items:center; font-size:13px; }
+    .result-panel { border-radius:10px; padding:14px; margin-top:12px; border:1px solid var(--border); }
+    .result-panel.ready { background:var(--soft-green); border-color:#91db8b; }
+    .result-panel.locked { background:var(--locked); border-color:#d8dde6; }
+    .result-title { font-weight:700; color:var(--dark); margin-bottom:4px; }
+    .progress { height:10px; background:#ecebea; border-radius:999px; overflow:hidden; margin:12px 0 6px; }
+    .progress span { display:block; height:100%; width:100%; background:var(--success); }
+    .step { display:flex; gap:10px; align-items:flex-start; margin-bottom:14px; }
+    .dot { width:14px; height:14px; border-radius:50%; background:var(--blue); margin-top:3px; flex:0 0 auto; }
+    .dot.done { background:var(--success); }
+    .dot.wait { background:#c9c7c5; }
+    .step-title { font-weight:700; font-size:14px; }
+    .step-meta { font-size:12px; color:var(--muted); margin-top:3px; line-height:1.35; }
+    .actions { display:flex; justify-content:flex-end; gap:10px; margin-top:16px; }
+    button { border:0; border-radius:8px; padding:10px 16px; font-weight:700; cursor:pointer; }
+    .primary { background:var(--blue); color:#fff; }
+    .danger { background:#fff; color:var(--error); border:1px solid var(--error); }
+    .disabled { background:#ecebea; color:#706e6b; cursor:not-allowed; }
+    .approval-card { border:1px solid #91db8b; background:#fbfffb; }
+    .locked-card { background:#f8f8f8; border-style:dashed; }
+    .decision-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px; }
+    .decision { border:1px solid var(--border); border-radius:10px; padding:12px; background:#fff; }
+    .decision strong { display:block; margin-bottom:4px; color:var(--dark); }
+    @media(max-width:940px){ .grid,.summary,.item-controls,.decision-grid { grid-template-columns:1fr; } .header { flex-direction:column; } }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="header">
+      <div>
+        <div class="eyebrow">Governance & Review Framework</div>
+        <h1>Work Order Billing Review</h1>
+        <p class="note">Reviewer evaluates the applicable policy review items. Approval is only available after all review items are either completed or marked as not applicable.</p>
+      </div>
+      <div class="pill ready">Ready for Approval</div>
+    </section>
+
+    <section class="grid">
+      <div>
+        <section class="card">
+          <h2>Business Record Summary</h2>
+          <div class="summary">
+            <div class="field"><div class="label">Evaluated Record</div><div class="value">Work Order · WO-104829</div></div>
+            <div class="field"><div class="label">Service Line</div><div class="value">EV Services</div></div>
+            <div class="field"><div class="label">Current Status</div><div class="value">Ready for Billing</div></div>
+            <div class="field"><div class="label">Policy</div><div class="value">WO Billing Review</div></div>
+            <div class="field"><div class="label">Review Status</div><div class="value">Review Passed</div></div>
+            <div class="field"><div class="label">Approval Status</div><div class="value">Pending Approval</div></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Review Checklist</h2>
+          <p class="note" style="margin-bottom:14px;">Each item must be completed or marked as not applicable. The result is captured separately as a reviewer decision.</p>
+
+          <div class="review-item">
+            <div class="review-item-header">
+              <div class="checkbox">✓</div>
+              <div>
+                <div class="item-title">Required billing fields are populated</div>
+                <div class="help">System pre-review checked required Work Order billing fields before submission.</div>
+              </div>
+              <div class="tag passed">Completed</div>
+            </div>
+            <div class="item-controls">
+              <div class="control">
+                <label>Result</label>
+                <select><option selected>Pass</option><option>Fail</option><option>Needs Clarification</option><option>Not Applicable</option></select>
+              </div>
+              <div class="control">
+                <label>Reviewer Comments</label>
+                <textarea>All required billing fields are populated.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-item">
+            <div class="review-item-header">
+              <div class="checkbox">✓</div>
+              <div>
+                <div class="item-title">Supporting evidence exists</div>
+                <div class="help">Reviewer validates whether supporting documentation exists on the evaluated record or approved source.</div>
+              </div>
+              <div class="tag passed">Completed</div>
+            </div>
+            <div class="evidence">
+              <span><strong>Evidence status:</strong> Evidence found</span>
+              <span class="tag passed">Available</span>
+            </div>
+            <div class="item-controls">
+              <div class="control">
+                <label>Result</label>
+                <select><option selected>Pass</option><option>Fail</option><option>Needs Clarification</option><option>Not Applicable</option></select>
+              </div>
+              <div class="control">
+                <label>Reviewer Comments</label>
+                <textarea>Supporting documentation exists and is sufficient for review.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-item">
+            <div class="review-item-header">
+              <div class="checkbox">✓</div>
+              <div>
+                <div class="item-title">Billing discrepancies reviewed</div>
+                <div class="help">Reviewer confirms discrepancies were reviewed before the record proceeds to approval.</div>
+              </div>
+              <div class="tag passed">Completed</div>
+            </div>
+            <div class="item-controls">
+              <div class="control">
+                <label>Result</label>
+                <select><option selected>Pass</option><option>Fail</option><option>Needs Clarification</option><option>Not Applicable</option></select>
+              </div>
+              <div class="control">
+                <label>Reviewer Comments</label>
+                <textarea>Discrepancies reviewed. No blocking issues found.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-item">
+            <div class="review-item-header">
+              <div class="checkbox">✓</div>
+              <div>
+                <div class="item-title">Tax code validation</div>
+                <div class="help">This item is not required for this Work Order type.</div>
+              </div>
+              <div class="tag manual">Not Applicable</div>
+            </div>
+            <div class="item-controls">
+              <div class="control">
+                <label>Result</label>
+                <select><option>Pass</option><option>Fail</option><option>Needs Clarification</option><option selected>Not Applicable</option></select>
+              </div>
+              <div class="control">
+                <label>Reviewer Comments</label>
+                <textarea>Not applicable for this service line.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-panel ready">
+            <div class="result-title">Review Passed</div>
+            <p class="note">All review items are either completed or marked as not applicable. No blocking result remains open.</p>
+            <div class="progress"><span></span></div>
+            <p class="note"><strong>4 of 4</strong> review items are completed or not applicable.</p>
+          </div>
+        </section>
+      </div>
+
+      <aside>
+        <section class="card">
+          <h2>Review Progress</h2>
+          <div class="step"><div class="dot done"></div><div><div class="step-title">Review Created</div><div class="step-meta">Jul 6, 2026 · 9:14 AM · System</div></div></div>
+          <div class="step"><div class="dot done"></div><div><div class="step-title">Pre-Review Completed</div><div class="step-meta">Applicable policies and review items identified automatically.</div></div></div>
+          <div class="step"><div class="dot done"></div><div><div class="step-title">Reviewer Completed Checklist</div><div class="step-meta">4 of 4 items completed or not applicable.</div></div></div>
+          <div class="step"><div class="dot wait"></div><div><div class="step-title">Approval Pending</div><div class="step-meta">Approval is now available because the review passed.</div></div></div>
+        </section>
+
+        <section class="card approval-card">
+          <h2>Approval</h2>
+          <p class="note">Approval is available only after the review passes. The approver makes the final approval decision based on the completed review.</p>
+          <div class="decision-grid">
+            <div class="decision"><strong>Approve</strong><p class="note">Allow the controlled business transition to proceed.</p></div>
+            <div class="decision"><strong>Reject</strong><p class="note">Stop the transition and keep the record from proceeding.</p></div>
+          </div>
+          <div class="control" style="margin-top:14px;">
+            <label>Approver Comments</label>
+            <textarea placeholder="Optional approver comments"></textarea>
+          </div>
+          <div class="actions">
+            <button class="danger">Reject</button>
+            <button class="primary">Approve</button>
+          </div>
+        </section>
+
+        <section class="card locked-card">
+          <h2>Approval Locked Example</h2>
+          <p class="note">If at least one review item is still pending, or if a blocking result exists, the Approval section remains locked and actions are not available.</p>
+          <div class="result-panel locked">
+            <div class="result-title">Approval Locked</div>
+            <p class="note">Complete all review items or mark them as not applicable before approval can begin.</p>
+          </div>
+          <div class="actions"><button class="disabled">Approve</button></div>
+        </section>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
