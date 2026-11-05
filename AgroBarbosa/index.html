@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Prototipo Fase 3 · Gestión Productiva</title>
+<title>AgroBarbosa · Fase 4 · Prototipo Lightning</title>
 <style>
 :root{
   --slds-blue:#0176d3; --slds-blue-dark:#014486; --ink:#181818; --muted:#706e6b;
@@ -71,15 +71,94 @@ button{font:inherit}.hidden{display:none!important}
 .filter-grid{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:10px;align-items:end}.filter-grid label{display:block;font-size:12px;font-weight:700;margin-bottom:5px}.filter-grid select{width:100%;padding:9px;border:1px solid #747474;border-radius:4px;background:#fff}.results-meta{font-size:12px;color:#706e6b;margin-top:10px}.offer-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.offer-card{background:#fff;border:1px solid #ddd;border-radius:6px;box-shadow:0 1px 2px #0000000d;overflow:hidden}.offer-card-head{padding:16px 18px;border-bottom:1px solid #eee;display:flex;gap:12px}.offer-card-head .object-icon{width:38px;height:38px;font-size:12px}.offer-card-head h3{margin:0 0 4px;font-size:16px;color:#032d60}.offer-card-head p{margin:0;color:#706e6b;font-size:12px}.offer-card-body{padding:16px 18px}.offer-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.offer-card-grid span{display:block;font-size:11px;color:#706e6b;margin-bottom:3px}.offer-card-grid strong{font-size:13px}.offer-card-foot{padding:12px 18px;border-top:1px solid #eee;text-align:right}
 @media(max-width:800px){.filter-grid{grid-template-columns:1fr}.offer-cards{grid-template-columns:1fr}}
 @media(max-width:800px){.flow-grid,.layout{grid-template-columns:1fr}.fields{grid-template-columns:1fr}.appnav{overflow:auto}.topbar{padding:0 10px}.brand{font-size:13px}}
+
+/* Widget de trazabilidad académica */
+.trace-launch{position:fixed;right:22px;bottom:22px;z-index:30;border:0;border-radius:28px;background:#032d60;color:#fff;padding:13px 18px;box-shadow:0 5px 18px #0004;cursor:pointer;font-weight:700}
+.trace-panel{position:fixed;right:22px;bottom:80px;z-index:30;width:min(390px,calc(100vw - 32px));max-height:min(70vh,580px);overflow:auto;background:#fff;border:1px solid #d8dde6;border-radius:12px;box-shadow:0 12px 35px #0003}
+.trace-head{display:flex;align-items:center;justify-content:space-between;background:#032d60;color:white;padding:15px 18px}.trace-head button{background:transparent;color:#fff;border:0;font-size:23px;cursor:pointer}
+.trace-body{padding:16px}.trace-item{padding:13px 0;border-top:1px solid #e5e5e5}.trace-item:first-child{border-top:0}.trace-ids{display:flex;gap:8px;align-items:center;margin-bottom:6px}.trace-key{background:#eaf3ff;color:#032d60;padding:4px 8px;border-radius:5px;font-weight:700;font-size:12px}.trace-hu{font-size:12px;color:#555}.trace-item strong{display:block;font-size:14px}.trace-item p{font-size:12px;color:#555;margin:5px 0}.trace-note{background:#fff7e6;padding:10px 12px;font-size:12px;border-radius:6px;margin-top:12px;line-height:1.45}.trace-mode{font-size:12px;display:flex;align-items:center;gap:8px;margin-top:14px}.trace-mode input{accent-color:#0176d3}
+@media(max-width:500px){.trace-launch{right:12px;bottom:12px}.trace-panel{right:12px;bottom:70px}}
+
+:root{--slds-blue:#2366a8;--slds-blue-dark:#164779;--nav:#142e52;--bg:#f3f6fb;--border:#d9e2ee;--ink:#1c2e43}
+body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg)}
+.prototype-bar{background:#e9f0fa;color:#254a75}
+.brand,.hero h1,.flow-card h2{color:#204f86}.appnav{background:var(--nav)}.navbtn.active,.navbtn:hover{background:#254a75}
+.page-head{border-radius:14px;box-shadow:0 4px 22px #1a355510}.card,.flow-card,.offer-card{border-radius:14px;box-shadow:0 5px 22px #1a355510;border-color:#dfe6f1}.object-icon{background:#4779b5;border-radius:12px}.primary{background:#2366a8;border-color:#2366a8}.primary:hover{background:#164779}.secondary,.change{border-color:#2366a8;color:#2366a8}.note{background:#edf3fb;border-left-color:#2366a8}.badge{background:#e4effc;color:#204f86}.trace-launch{background:#204f86;display:block!important}.trace-launch.hidden{display:none!important}.trace-head{background:#204f86}.trace-key{background:#e8f0fc;color:#204f86}.login-page{background:radial-gradient(circle at top left,#e7f0fc,#f6f8fc 55%)}.login-card{border-radius:18px;box-shadow:0 15px 50px #1a35551a}.login-brand h1{font-size:30px;color:#204f86}.search:focus,input:focus,select:focus,textarea:focus{outline:2px solid #85b1e4;outline-offset:1px}.metric strong{color:#204f86}
+.demo-form label{color:#334f71}.demo-form input,.demo-form select,.demo-form textarea{border-color:#bccbdc}.demo-modal{background:#1329479c}.demo-tag{background:#e7f0fc;color:#204f86}.demo-splash{background:linear-gradient(120deg,#183b66,#3276b4)}.demo-stat{border-color:#dfe6f1}.demo-stat strong{color:#204f86}
+.ab-context{background:#eef4fc;border:1px solid #c7d8ef;border-radius:10px;padding:12px 14px;margin:16px 0;color:#244769;font-size:13px}.ab-context strong{display:block;margin-bottom:5px}.ab-context small{color:#4e6784}.ab-context .trace-key{display:inline-block;margin-right:6px}.ab-form-hint{color:#53677f;font-size:12px;margin-top:4px}
+
+.demo-error{color:#a52c22;font-size:13px;margin:9px 0}.demo-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.demo-form label{display:block;font-size:12px;font-weight:700;color:#3e3e3c}.demo-form input,.demo-form select,.demo-form textarea{width:100%;padding:10px;border:1px solid #747474;border-radius:8px;background:white;margin-top:6px}.demo-form .wide{grid-column:1/-1}.demo-modal{position:fixed;inset:0;z-index:50;background:#102b4c99;display:grid;place-items:center;padding:20px}.demo-modal section{background:white;width:min(690px,100%);max-height:90vh;overflow:auto;border-radius:16px;padding:24px;box-shadow:0 20px 80px #0005}.demo-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:22px}.demo-table-actions{display:flex;gap:8px;align-items:center}.demo-tag{font-size:11px;background:#e7f0fc;color:#204f86;padding:4px 8px;border-radius:8px}.demo-empty{padding:30px;text-align:center;color:#53677f}.demo-splash{background:linear-gradient(115deg,#163b67,#2163a1);color:white;padding:28px;border-radius:16px;margin-bottom:22px}.demo-splash h2{font-size:26px;margin:0 0 8px}.demo-splash p{margin:0;opacity:.9}.demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}.demo-stat{background:white;border:1px solid #dfe6f1;border-radius:13px;padding:18px}.demo-stat strong{display:block;font-size:27px;color:#204f86}.demo-stat span{color:#53677f;font-size:12px}.trace-panel{z-index:55}.trace-launch{z-index:54}
+@media(max-width:700px){.demo-grid,.demo-form{grid-template-columns:1fr}.demo-form .wide{grid-column:auto}.page-head{flex-wrap:wrap}.page-head .actions{margin-left:0}.main{padding:14px}}
+
+
+/* V5: composición basada en patrones Salesforce Lightning, sin suplantar la marca */
+:root{--slds-blue:#0176d3;--slds-blue-dark:#014486;--nav:#fff;--bg:#f3f3f3;--border:#dddbda;--ink:#181818;--muted:#706e6b}
+body{font-family:Arial,"Helvetica Neue",sans-serif;background:#f3f3f3;color:#181818}
+.prototype-bar{background:#eef4ff;border-bottom:1px solid #d8e6fe;color:#032d60;font-size:11px;letter-spacing:.065em;padding:5px 12px}
+.topbar{height:64px;background:#fff;border-bottom:1px solid #dddbda;box-shadow:0 1px 2px #0000000b;padding:0 24px}
+.cloud{background:#0176d3!important}.cloud:before,.cloud:after{background:#0176d3!important}
+.brand{font-size:17px!important;font-weight:700;color:#032d60!important;display:flex;flex-direction:column;gap:2px}
+.brand-sub{font-size:11px;color:#706e6b;font-weight:400}
+.flow-pill{background:#f3f3f3;border:1px solid #dddbda;border-radius:14px;color:#3e3e3c;font-weight:600}
+.change,.secondary{background:#fff!important;border:1px solid #0176d3!important;border-radius:4px!important;color:#0176d3!important;font-weight:600}
+.primary{background:#0176d3!important;border:1px solid #0176d3!important;color:#fff!important;border-radius:4px!important;box-shadow:none!important;font-weight:700}
+.primary:hover{background:#014486!important}
+.appnav{background:#fff!important;color:#181818!important;box-shadow:0 2px 3px #00000012;border-bottom:1px solid #dddbda;min-height:44px;padding:0 24px}
+.appnav .appname{font-size:13px;color:#032d60;margin-right:20px;border-right:1px solid #dddbda;padding-right:20px}
+.navbtn{color:#3e3e3c!important;border-bottom:3px solid transparent!important;padding:13px 16px!important}
+.navbtn.active{background:#f3f8ff!important;border-bottom-color:#0176d3!important;color:#014486!important;font-weight:700}
+.navbtn:hover{background:#f3f3f3!important;color:#014486!important;border-bottom-color:#0176d3!important}
+.main{max-width:1280px;padding:24px 24px 72px}
+.page-head{background:#fff!important;border:1px solid #dddbda!important;border-radius:4px!important;padding:18px 22px!important;box-shadow:0 1px 2px #0000000a!important;margin-bottom:16px}
+.page-head h1{font-size:23px!important;font-weight:700!important;color:#181818!important}
+.eyebrow{color:#706e6b!important;font-size:12px!important}
+.object-icon{background:#0176d3!important;border-radius:4px!important;width:42px;height:42px}
+.card,.flow-card,.offer-card{background:#fff;border:1px solid #dddbda!important;border-radius:4px!important;box-shadow:0 1px 2px #0000000a!important}
+.card h3{background:#fafaf9;color:#181818;font-size:15px;padding:14px 18px}
+.toolbar{background:#fff;padding:12px 16px}
+table.data th{background:#fafaf9;color:#514f4d;font-size:12px;font-weight:700;border-top:1px solid #eeeceb}
+table.data td{padding:13px 12px}
+table.data tr:hover td{background:#f8fbff}
+table.data a{color:#0176d3!important}
+.badge{background:#e3f3e8!important;color:#2e844a!important;border-radius:14px}
+.note{background:#f3f8ff!important;border-left-color:#0176d3!important}
+.demo-modal{background:#0008!important;backdrop-filter:none!important}
+.demo-modal section{border-radius:5px!important;box-shadow:0 12px 48px #0004!important;border:1px solid #dddbda!important;padding:0!important;overflow:hidden;max-height:90vh;overflow-y:auto}
+.demo-modal section>h2{font-size:20px!important;text-align:center;margin:0!important;padding:18px 24px!important;border-bottom:1px solid #dddbda;background:#fafaf9;color:#181818!important}
+.demo-modal section>p{margin:0!important;padding:12px 24px 4px;font-size:12px}
+.demo-modal .ab-context{margin:10px 24px!important;border:1px solid #d8e6fe!important;background:#f3f8ff!important;border-left:3px solid #0176d3!important}
+.demo-modal form{padding:0 24px}
+.demo-form{padding:14px 0 18px!important}
+.demo-form label{color:#3e3e3c!important;font-size:12px!important;font-weight:600!important}
+.demo-form input,.demo-form select,.demo-form textarea{border:1px solid #747474!important;border-radius:4px!important;background:#fff!important;min-height:38px!important}
+.demo-form input:focus,.demo-form select:focus,.demo-form textarea:focus{outline:2px solid #0176d3!important;outline-offset:1px}
+.demo-actions{margin:0 -24px!important;padding:13px 24px!important;border-top:1px solid #dddbda!important;background:#fafaf9!important;display:flex;justify-content:center!important;gap:9px!important}
+.trace-launch{background:#0176d3!important;border-radius:22px!important;box-shadow:0 3px 10px #0002!important}
+.trace-head{background:#032d60!important}.trace-key{background:#eef4ff!important;color:#032d60!important}
+.login-page{background:#f3f3f3!important}.login-card{border:1px solid #dddbda!important;border-radius:5px!important;box-shadow:0 2px 8px #00000014!important}.login-brand h1{color:#032d60!important;font-size:26px!important}
+@media(max-width:700px){.appnav{padding:0 10px}.appnav .appname{display:none}.topbar{padding:0 12px}.brand-sub{display:none}.main{padding:12px}.demo-modal section{width:100%!important}}
+
+
+/* Consolidación de estilo Lightning: misma familia de superficies y controles */
+:root{--slds-blue:#0176d3;--slds-blue-dark:#014486;--nav:#fff;--ink:#181818;--bg:#f3f3f3;--border:#dddbda}
+.demo-splash{background:linear-gradient(115deg,#163b67,#2163a1)!important;border-radius:5px!important;padding:26px 28px!important}
+.demo-stat{border-radius:5px!important;box-shadow:0 1px 2px #0000000b!important}
+.demo-form label{color:#3e3e3c!important}
+.demo-form input,.demo-form select,.demo-form textarea{border:1px solid #747474!important;border-radius:4px!important}
+.demo-modal{background:#102b4c99!important}
+.ab-context{background:#f3f8ff!important;border:1px solid #d8e6fe!important;border-left:3px solid #0176d3!important;border-radius:4px!important;color:#032d60!important}
+.trace-launch{background:#0176d3!important;color:white!important}
+.note{color:#3e3e3c}
+@media(max-width:600px){.demo-form{grid-template-columns:1fr!important}.demo-grid{grid-template-columns:1fr!important}.demo-modal section{max-height:95vh!important}.demo-modal form{padding:0 16px!important}.demo-modal .ab-context{margin:10px 16px!important}}
 </style>
 </head>
 <body>
-<div class="prototype-bar">PROTOTIPO FUNCIONAL · FASE 3 · DATOS DEMOSTRATIVOS</div>
+<div class="prototype-bar">AGROBARBOSA · FASE 4 · PROTOTIPO INTERACTIVO · DATOS SIMULADOS</div>
 
 <section id="selector" class="login-page">
   <div class="login-brand">
     <div class="cloud"></div>
-    <h1>Gestión Productiva</h1>
+    <h1>AgroBarbosa</h1>
     <p>Sistema de Gestión Productiva y Comercialización Agrícola</p>
   </div>
   <div class="login-card">
@@ -104,18 +183,171 @@ button{font:inherit}.hidden{display:none!important}
 
 <section id="app" class="hidden">
   <div class="topbar">
-    <div class="cloud"></div><div class="brand">Gestión Productiva</div><div class="spacer"></div>
+    <div class="cloud"></div><div class="brand">AgroBarbosa <span class="brand-sub">Gestión productiva</span></div><div class="spacer"></div>
     <span id="flowLabel" class="flow-pill"></span>
     <button class="change" onclick="backToSelector()">Cambiar usuario</button>
   </div>
   <nav class="appnav">
-    <span class="appname">Gestión Productiva</span>
+    <span class="appname">AgroBarbosa</span>
     <div id="menu"></div>
   </nav>
   <main id="content" class="main"></main>
 </section>
 
+
+<!-- Panel informativo del prototipo: no modifica datos de negocio -->
+<button id="traceLaunch" class="trace-launch hidden" onclick="toggleTrace()" aria-label="Abrir trazabilidad de historias" aria-expanded="false">ⓘ Historias de usuario</button>
+<aside id="tracePanel" class="trace-panel hidden" aria-label="Trazabilidad de requisitos">
+ <div class="trace-head"><strong>Historias relacionadas</strong><button onclick="toggleTrace()" aria-label="Cerrar">×</button></div>
+ <div class="trace-body"><div id="traceLocation" class="eyebrow"></div><div id="traceItems"></div>
+ <div class="trace-note">Referencias académicas del prototipo. Las referencias provienen del backlog. Su presencia no demuestra que la funcionalidad esté implementada.</div>
+ <label class="trace-mode"><input type="checkbox" id="tracePresentation" onchange="setPresentationMode(this.checked)"> Modo presentación (ocultar widget)</label></div>
+</aside>
+
 <script>
+
+// Catálogo contrastado con AgroBarbosa_Jira_Trazabilidad.csv.
+const traceCatalog = {
+  "HU01": {
+    "hu": "HU01",
+    "jira": "AGRO-10",
+    "title": "Registrar productor"
+  },
+  "HU02": {
+    "hu": "HU02",
+    "jira": "AGRO-11",
+    "title": "Consultar información del productor"
+  },
+  "HU03": {
+    "hu": "HU03",
+    "jira": "AGRO-12",
+    "title": "Actualizar información del productor"
+  },
+  "HU04": {
+    "hu": "HU04",
+    "jira": "AGRO-13",
+    "title": "Registrar cultivo"
+  },
+  "HU05": {
+    "hu": "HU05",
+    "jira": "AGRO-14",
+    "title": "Consultar cultivos"
+  },
+  "HU06": {
+    "hu": "HU06",
+    "jira": "AGRO-15",
+    "title": "Actualizar cultivo"
+  },
+  "HU07": {
+    "hu": "HU07",
+    "jira": "AGRO-16",
+    "title": "Asociar producto al cultivo"
+  },
+  "HU08": {
+    "hu": "HU08",
+    "jira": "AGRO-17",
+    "title": "Registrar seguimiento del cultivo"
+  },
+  "HU09": {
+    "hu": "HU09",
+    "jira": "AGRO-18",
+    "title": "Consultar historial del cultivo"
+  },
+  "HU10": {
+    "hu": "HU10",
+    "jira": "AGRO-19",
+    "title": "Registrar producto en catálogo"
+  },
+  "HU11": {
+    "hu": "HU11",
+    "jira": "AGRO-20",
+    "title": "Actualizar producto del catálogo"
+  },
+  "HU12": {
+    "hu": "HU12",
+    "jira": "AGRO-21",
+    "title": "Activar o desactivar producto"
+  },
+  "HU13": {
+    "hu": "HU13",
+    "jira": "AGRO-22",
+    "title": "Registrar producción"
+  },
+  "HU14": {
+    "hu": "HU14",
+    "jira": "AGRO-23",
+    "title": "Consultar producción"
+  },
+  "HU15": {
+    "hu": "HU15",
+    "jira": "AGRO-24",
+    "title": "Actualizar producción"
+  },
+  "HU16": {
+    "hu": "HU16",
+    "jira": "AGRO-25",
+    "title": "Publicar oferta agrícola"
+  },
+  "HU17": {
+    "hu": "HU17",
+    "jira": "AGRO-26",
+    "title": "Consultar mis ofertas"
+  },
+  "HU18": {
+    "hu": "HU18",
+    "jira": "AGRO-27",
+    "title": "Actualizar disponibilidad de oferta"
+  },
+  "HU19": {
+    "hu": "HU19",
+    "jira": "AGRO-28",
+    "title": "Actualizar estado de oferta"
+  },
+  "HU20": {
+    "hu": "HU20",
+    "jira": "AGRO-29",
+    "title": "Consultar oferta disponible"
+  },
+  "HU21": {
+    "hu": "HU21",
+    "jira": "AGRO-30",
+    "title": "Consultar detalle de oferta"
+  },
+  "HU22": {
+    "hu": "HU22",
+    "jira": "AGRO-31",
+    "title": "Buscar y filtrar oferta"
+  }
+};
+// Historias relacionadas por pantalla, no equivalen a implementación completa.
+const tracePages={
+ productor:{'Inicio':['HU01'],'Mi perfil':['HU01','HU02','HU03'],'Mis cultivos':['HU05','HU06'],'Producción':['HU13','HU14','HU15'],'Mis ofertas':['HU16','HU17','HU18','HU19']},
+ admin:{'Inicio':['HU10','HU11','HU12'],'Catálogo de productos':['HU10','HU11','HU12']},
+ comprador:{'Ofertas disponibles':['HU20','HU21','HU22']}
+};
+let tracePage='';
+function updateTrace(page,ids){
+ tracePage=page;
+ document.getElementById('traceLocation').textContent=labels[currentFlow]+' / '+page;
+ const chosen=ids||((tracePages[currentFlow]||{})[page]||[]);
+ document.getElementById('traceItems').innerHTML=chosen.length?chosen.map(id=>{
+  const h=traceCatalog[id];if(!h)return '';
+  const title=h.title||'Título pendiente de cotejo con el Anexo 3';
+  const status='Historia del backlog · representación visual por validar';
+  return '<div class="trace-item"><div class="trace-ids"><span class="trace-key">'+h.jira+'</span><span class="trace-hu">'+h.hu+'</span></div><strong>'+title+'</strong><p>'+status+'</p></div>';
+ }).join(''):'<p>No se ha definido una referencia para esta pantalla.</p>';
+}
+function toggleTrace(){
+ const panel=document.getElementById('tracePanel'),open=panel.classList.contains('hidden');
+ panel.classList.toggle('hidden',!open);
+ document.getElementById('traceLaunch').setAttribute('aria-expanded',String(open));
+}
+function setPresentationMode(on){
+ document.getElementById('traceLaunch').classList.toggle('hidden',on||!currentFlow);
+ document.getElementById('tracePanel').classList.add('hidden');
+ document.getElementById('traceLaunch').setAttribute('aria-expanded','false');
+}
+
 const menus={
   productor:["Inicio","Mi perfil","Mis cultivos","Producción","Mis ofertas"],
   admin:["Inicio","Catálogo de productos"],
@@ -151,14 +383,20 @@ function enterFlow(flow){
     b.className="navbtn"+(i===0?" active":""); b.textContent=item;
     b.onclick=()=>showPage(item,b); menu.appendChild(b);
   });
+  document.getElementById("traceLaunch").classList.remove("hidden");
+  document.getElementById("tracePresentation").checked=false;
   showPage(menus[flow][0],menu.firstChild);
 }
 function backToSelector(){
+  document.getElementById("traceLaunch").classList.add("hidden");
+  document.getElementById("tracePanel").classList.add("hidden");
+  currentFlow="";
   document.getElementById("app").classList.add("hidden");
   document.getElementById("selector").classList.remove("hidden");
   document.getElementById("demoPassword").value="";
 }
 function showPage(page,btn){
+  updateTrace(page);
   document.querySelectorAll(".navbtn").forEach(x=>x.classList.remove("active"));
   if(btn) btn.classList.add("active");
   const c=document.getElementById("content");
@@ -259,6 +497,7 @@ function cropsList(){
  </section>`;
 }
 function cropDetail(name){
+  updateTrace("Detalle de cultivo",tracePages.productor["Mis cultivos"]);
  document.getElementById("content").innerHTML=`
  <div style="margin-bottom:12px"><button class="secondary" onclick="clickMenu('Mis cultivos')">← Mis cultivos</button></div>
  <div class="page-head">
@@ -312,6 +551,7 @@ function productionList(){
  <div class="note">La producción registra el resultado obtenido de un cultivo. La publicación de una cantidad para comercialización se gestiona posteriormente como una Oferta.</div>`;
 }
 function productionDetail(name){
+  updateTrace("Detalle de producción",tracePages.productor["Producción"]);
  const isCoffee=name.toLowerCase().includes("café");
  const product=isCoffee?"Café":"Aguacate";
  const crop=isCoffee?"Cultivo de café":"Cultivo de aguacate";
@@ -364,6 +604,7 @@ function offersList(){
  <div class="note">Una oferta representa la cantidad de una producción que el productor decide poner a disposición para comercialización. No incluye pedidos, pagos, transporte ni logística de entrega.</div>`;
 }
 function offerDetail(name,product,production,available,produced,period,status){
+  updateTrace("Detalle de oferta",tracePages.productor["Mis ofertas"]);
  const badge=status==="Disponible"?'<span class="badge">Disponible</span>':'<span class="small-badge status-unavailable">No disponible</span>';
  document.getElementById("content").innerHTML=`
  <div style="margin-bottom:12px"><button class="secondary" onclick="clickMenu('Mis ofertas')">← Mis ofertas</button></div>
@@ -433,6 +674,7 @@ function applyBuyerFilters(){
 }
 function clearBuyerFilters(){["buyerProduct","buyerProducer","buyerPeriod"].forEach(id=>document.getElementById(id).value="");applyBuyerFilters();}
 function buyerOfferDetail(product,producer,farm,qty,period){
+  updateTrace("Detalle de oferta disponible",tracePages.comprador["Ofertas disponibles"]);
  document.getElementById("content").innerHTML=`<div style="margin-bottom:12px"><button class="secondary" onclick="clickMenu('Ofertas disponibles')">← Ofertas disponibles</button></div><div class="page-head"><div class="object-icon">OF</div><div><div class="eyebrow">Oferta disponible</div><h1>${product}</h1></div><div class="actions"><span class="badge">Disponible</span></div></div><div class="record-grid"><div><section class="card"><h3>Información de la oferta</h3><div class="card-body"><div class="fields"><div class="field"><label>Producto</label><div class="value">${product}</div></div><div class="field"><label>Cantidad disponible</label><div class="value">${qty} kg</div></div><div class="field"><label>Unidad de medida</label><div class="value">kg</div></div><div class="field"><label>Período de cosecha</label><div class="value">${period}</div></div><div class="field"><label>Estado</label><div class="value"><span class="badge">Disponible</span></div></div></div></div></section></div><aside><section class="card"><h3>Información del productor</h3><div class="card-body"><div class="field"><label>Productor</label><div class="value">${producer}</div></div><div class="field" style="margin-top:16px"><label>Finca / unidad productiva</label><div class="value">${farm}</div></div><div class="field" style="margin-top:16px"><label>Municipio</label><div class="value">Barbosa, Antioquia</div></div><div class="field" style="margin-top:16px"><label>Vereda</label><div class="value">Dato demostrativo</div></div></div></section></aside></div><div class="note">Pedidos, pagos, transporte y entrega están fuera del alcance definido para el prototipo.</div>`;
 }
 
@@ -482,6 +724,8 @@ function toggleProduct(btn){
  btn.textContent=inactive?"Desactivar":"Activar";
 }
 function openModal(type){
+  const modalMap={crop:["HU04"],followup:["HU08"],product:["HU10"],production:["HU13"],productionEdit:["HU15"],offer:["HU16"],offerEdit:["HU18","HU19"]};
+  updateTrace("Formulario: "+type,modalMap[type]);
  let title="", body="";
  if(type==="crop"){title="Nuevo cultivo";body=`
   <div class="form-grid">
@@ -550,13 +794,84 @@ function syncProductionProduct(select){
  const field=document.getElementById("productionProduct");
  if(field) field.value=select.value;
 }
-function closeModal(){const m=document.getElementById("modal");if(m)m.remove();}
+function closeModal(){const m=document.getElementById("modal");if(m)m.remove();const active=document.querySelector(".navbtn.active");if(active)updateTrace(active.textContent);}
 
 function clickMenu(label){
  const buttons=[...document.querySelectorAll(".navbtn")];
  const b=buttons.find(x=>x.textContent===label);
  if(b) b.click();
 }
+
+// Fase 4: motor de demostración local. Los registros no representan datos reales.
+const AB_KEY='agrobarbosa_fase4_v3';
+const AB_SEED={
+ profile:{name:'María López',doc:'Dato demostrativo',phone:'300 000 0000',email:'productor.agricola@email.com',farm:'Finca El Porvenir',village:'La Primavera',municipality:'Barbosa'},
+ products:[{id:'p1',name:'Aguacate',category:'Frutal',unit:'kg',active:true},{id:'p2',name:'Café',category:'Otro',unit:'kg',active:true},{id:'p3',name:'Plátano',category:'Otro',unit:'kg',active:true},{id:'p4',name:'Tomate',category:'Hortaliza',unit:'kg',active:true}],
+ crops:[{id:'c1',name:'Cultivo de aguacate',productId:'p1',date:'2026-03-15',area:1.5,active:true},{id:'c2',name:'Cultivo de café',productId:'p2',date:'2026-01-10',area:0.8,active:true}],
+ followups:[{id:'f1',cropId:'c1',date:'2026-09-18',notes:'Seguimiento demostrativo de evolución del cultivo.'}],
+ productions:[{id:'r1',cropId:'c1',qty:850,period:'Septiembre 2026'},{id:'r2',cropId:'c2',qty:420,period:'Agosto 2026'},{id:'r3',cropId:'c1',qty:610,period:'Junio 2026'}],
+ offers:[{id:'o1',productionId:'r1',qty:300,active:true},{id:'o2',productionId:'r2',qty:180,active:true},{id:'o3',productionId:'r3',qty:0,active:false}]
+};
+function abLoad(){try{const saved=JSON.parse(localStorage.getItem(AB_KEY));if(saved&&saved.products&&saved.crops&&saved.productions&&saved.offers)return saved}catch(e){}return structuredClone(AB_SEED)}
+let ab=abLoad();
+function abSave(){try{localStorage.setItem(AB_KEY,JSON.stringify(ab))}catch(e){console.warn('Almacenamiento local no disponible',e)}}
+function abReset(){if(confirm('¿Restablecer los datos demostrativos?')){ab=structuredClone(AB_SEED);abSave();clickMenu(currentFlow==='productor'?'Inicio':currentFlow==='admin'?'Inicio':'Ofertas disponibles');abToast('Datos demostrativos restablecidos')}}
+function abToast(msg){const n=document.createElement('div');n.className='demo-toast';n.textContent=msg;document.body.appendChild(n);setTimeout(()=>n.remove(),2600)}
+function abEsc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function abProd(id){return ab.products.find(x=>x.id===id)}
+function abCrop(id){return ab.crops.find(x=>x.id===id)}
+function abProduction(id){return ab.productions.find(x=>x.id===id)}
+function abProductOfCrop(c){return abProd(c?.productId)}
+function abProductOfProduction(r){return abProductOfCrop(abCrop(r?.cropId))}
+function abOptions(items,selected='',placeholder='Seleccione...'){return '<option value="">'+placeholder+'</option>'+items.map(x=>'<option value="'+abEsc(x.id)+'" '+(x.id===selected?'selected':'')+'>'+abEsc(x.name)+'</option>').join('')}
+function abHead(title,subtitle,action='',label=''){return `<div class="page-head"><div class="object-icon">🌱</div><div><div class="eyebrow">${abEsc(subtitle)}</div><h1>${abEsc(title)}</h1></div>${action?`<div class="actions"><button class="primary" onclick="abForm('${action}')">${abEsc(label)}</button></div>`:''}</div>`}
+function abTable(head,rows){return `<section class="card"><div class="table-wrap"><table class="data"><thead><tr>${head.map(x=>'<th>'+abEsc(x)+'</th>').join('')}</tr></thead><tbody>${rows||'<tr><td colspan="8" class="demo-empty">Sin registros. Utiliza el botón de creación para agregar uno.</td></tr>'}</tbody></table></div></section>`}
+function abBtn(action,id,label='Editar'){return `<button class="secondary" onclick="abForm('${action}','${abEsc(id)}')">${label}</button>`}
+function abKpis(){return `<div class="demo-grid"><div class="demo-stat"><strong>${ab.crops.length}</strong><span>Cultivos registrados</span></div><div class="demo-stat"><strong>${ab.productions.length}</strong><span>Producciones registradas</span></div><div class="demo-stat"><strong>${ab.offers.filter(o=>o.active&&o.qty>0).length}</strong><span>Ofertas disponibles</span></div></div>`}
+function abHome(){return `<div class="demo-splash"><h2>Bienvenida a AgroBarbosa</h2><p>Gestión agrícola y consulta de oferta para pequeños productores de Barbosa, Antioquia.</p></div>${abKpis()}<section class="card"><h3>Accesos rápidos</h3><div class="card-body" style="display:flex;gap:10px;flex-wrap:wrap">${['Mi perfil','Mis cultivos','Producción','Mis ofertas'].map(x=>`<button class="secondary" onclick="clickMenu('${x}')">${x}</button>`).join('')}</div></section><div class="note">Entorno académico interactivo. Los datos se guardan únicamente en este navegador. <button class="secondary" onclick="abReset()">Restablecer demostración</button></div>`}
+function abProfile(){const p=ab.profile;return abHead(p.name,'Gestión de productores','profile','Editar perfil')+`<section class="card"><h3>Datos del productor y unidad productiva</h3><div class="card-body"><div class="fields">${[['Nombre',p.name],['Documento',p.doc],['Teléfono',p.phone],['Correo',p.email],['Unidad productiva',p.farm],['Vereda',p.village],['Municipio',p.municipality]].map(([k,v])=>`<div class="field"><label>${k}</label><div class="value">${abEsc(v)}</div></div>`).join('')}</div></div></section>`}
+function abProducts(){return abHead('Catálogo de productos','Administración','product','Nuevo producto')+abTable(['Producto','Categoría','Unidad','Estado','Acciones'],ab.products.map(p=>`<tr><td>${abEsc(p.name)}</td><td>${abEsc(p.category)}</td><td>${abEsc(p.unit)}</td><td><span class="demo-tag">${p.active?'Activo':'Inactivo'}</span></td><td class="demo-table-actions">${abBtn('product',p.id)}<button class="secondary" onclick="abToggleProduct('${p.id}')">${p.active?'Desactivar':'Activar'}</button></td></tr>`).join(''))}
+function abCrops(){return abHead('Mis cultivos','Gestión de cultivos','crop','Nuevo cultivo')+abTable(['Cultivo','Producto asociado','Inicio','Área (ha)','Estado','Acciones'],ab.crops.map(c=>`<tr><td>${abEsc(c.name)}</td><td>${abEsc(abProductOfCrop(c)?.name||'Sin producto')}</td><td>${abEsc(c.date)}</td><td>${abEsc(c.area)}</td><td>${c.active?'Activo':'Inactivo'}</td><td class="demo-table-actions">${abBtn('crop',c.id)}<button class="secondary" onclick="abFollowups('${c.id}')">Seguimiento</button></td></tr>`).join(''))}
+function abFollowups(id){const c=abCrop(id);if(!c)return;document.getElementById('content').innerHTML=`<button class="secondary" onclick="clickMenu('Mis cultivos')">← Mis cultivos</button>`+abHead(c.name,'Historial de seguimiento')+`<section class="card"><h3>Registros de seguimiento <button class="primary" style="float:right" onclick="abForm('followup','${id}')">Nuevo seguimiento</button></h3><div class="card-body">${ab.followups.filter(f=>f.cropId===id).sort((a,b)=>b.date.localeCompare(a.date)).map(f=>`<div class="metric"><div><strong>${abEsc(f.date)}</strong><p>${abEsc(f.notes)}</p></div></div>`).join('')||'Todavía no hay seguimientos.'}</div></section>`;updateTrace('Seguimiento',['HU08','HU09'])}
+function abProductions(){return abHead('Mi producción','Gestión productiva','production','Nueva producción')+abTable(['Cultivo','Producto','Cantidad','Cosecha','Acción'],ab.productions.map(r=>`<tr><td>${abEsc(abCrop(r.cropId)?.name||'')}</td><td>${abEsc(abProductOfProduction(r)?.name||'')}</td><td>${r.qty} ${abEsc(abProductOfProduction(r)?.unit||'kg')}</td><td>${abEsc(r.period)}</td><td>${abBtn('production',r.id)}</td></tr>`).join(''))}
+function abOffers(){return abHead('Mis ofertas','Comercialización agrícola','offer','Nueva oferta')+abTable(['Producto','Producción origen','Cantidad disponible','Estado','Acciones'],ab.offers.map(o=>{const r=abProduction(o.productionId),p=abProductOfProduction(r);return `<tr><td>${abEsc(p?.name||'')}</td><td>${abEsc(r?.period||'')}</td><td>${o.qty} ${abEsc(p?.unit||'kg')}</td><td><span class="demo-tag">${o.active&&o.qty>0?'Disponible':'No disponible'}</span></td><td>${abBtn('offer',o.id)}</td></tr>`}).join(''))}
+function abBuyer(){const avail=ab.offers.filter(o=>o.active&&o.qty>0).map(o=>({o,r:abProduction(o.productionId),p:abProductOfProduction(abProduction(o.productionId))}));return abHead('Ofertas disponibles','Consulta de oferta agrícola')+`<section class="card"><div class="card-body"><div class="filter-grid"><div><label>Producto</label><select id="abFilterProduct" onchange="abFilterOffers()"><option value="">Todos</option>${ab.products.map(p=>`<option value="${p.id}">${abEsc(p.name)}</option>`).join('')}</select></div><div><label>Período de cosecha</label><select id="abFilterPeriod" onchange="abFilterOffers()"><option value="">Todos</option>${[...new Set(avail.map(x=>x.r?.period).filter(Boolean))].map(x=>`<option>${abEsc(x)}</option>`).join('')}</select></div><div><label>Productor</label><select disabled><option>${abEsc(ab.profile.name)}</option></select></div><button class="secondary" onclick="document.getElementById('abFilterProduct').value='';document.getElementById('abFilterPeriod').value='';abFilterOffers()">Limpiar filtros</button></div><p id="abCount" class="results-meta"></p></div></section><div class="offer-cards" id="abBuyerCards">${avail.map(({o,r,p})=>`<article class="offer-card" data-product="${p?.id}" data-period="${abEsc(r?.period)}"><div class="offer-card-head"><div class="object-icon">🌾</div><div><h3>${abEsc(p?.name||'Producto')}</h3><p>Oferta disponible</p></div></div><div class="offer-card-body"><div class="offer-card-grid"><div><span>Productor</span><strong>${abEsc(ab.profile.name)}</strong></div><div><span>Cantidad</span><strong>${o.qty} ${abEsc(p?.unit||'kg')}</strong></div><div><span>Período</span><strong>${abEsc(r?.period)}</strong></div><div><span>Ubicación</span><strong>Barbosa, Antioquia</strong></div></div></div><div class="offer-card-foot"><button class="primary" onclick="abBuyerDetail('${o.id}')">Ver detalle</button></div></article>`).join('')||'<div class="demo-empty">No hay ofertas disponibles.</div>'}</div>`}
+function abFilterOffers(){const p=document.getElementById('abFilterProduct')?.value||'',period=document.getElementById('abFilterPeriod')?.value||'';let count=0;document.querySelectorAll('#abBuyerCards .offer-card').forEach(x=>{const show=(!p||x.dataset.product===p)&&(!period||x.dataset.period===period);x.style.display=show?'':'none';if(show)count++});const el=document.getElementById('abCount');if(el)el.textContent=count+' oferta(s) encontradas'}
+function abBuyerDetail(id){const o=ab.offers.find(x=>x.id===id),r=abProduction(o?.productionId),p=abProductOfProduction(r);if(!o||!o.active||!o.qty)return;document.getElementById('content').innerHTML=`<button class="secondary" onclick="clickMenu('Ofertas disponibles')">← Ofertas disponibles</button>`+abHead(p?.name||'Oferta','Detalle de oferta')+`<section class="card"><h3>Información de la oferta</h3><div class="card-body"><div class="fields">${[['Productor',ab.profile.name],['Unidad productiva',ab.profile.farm],['Municipio',ab.profile.municipality],['Cantidad disponible',o.qty+' '+(p?.unit||'kg')],['Período de cosecha',r?.period],['Estado','Disponible']].map(([k,v])=>`<div class="field"><label>${k}</label><div class="value">${abEsc(v)}</div></div>`).join('')}</div></div></section><div class="note">Pedidos, pagos, transporte y entrega están fuera del alcance de este prototipo.</div>`;updateTrace('Detalle de oferta',['HU21'])}
+const abOldShowPage=showPage;
+showPage=function(page,btn){document.querySelectorAll('.navbtn').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');let out='';if(currentFlow==='productor')out=({'Inicio':abHome,'Mi perfil':abProfile,'Mis cultivos':abCrops,'Producción':abProductions,'Mis ofertas':abOffers}[page]||abHome)();else if(currentFlow==='admin')out=(page==='Inicio'?`<div class="demo-splash"><h2>Administración de AgroBarbosa</h2><p>Catálogo agrícola estandarizado.</p></div><div class="demo-grid"><div class="demo-stat"><strong>${ab.products.filter(p=>p.active).length}</strong><span>Productos activos</span></div><div class="demo-stat"><strong>${ab.products.filter(p=>!p.active).length}</strong><span>Productos inactivos</span></div></div><button class="primary" onclick="clickMenu('Catálogo de productos')">Gestionar catálogo</button>`:abProducts());else out=abBuyer();document.getElementById('content').innerHTML=out;updateTrace(page);if(currentFlow==='comprador')abFilterOffers();};
+function abToggleProduct(id){const p=abProd(id);if(!p)return;if(p.active&&ab.crops.some(c=>c.productId===id)){abToast('Producto asociado a cultivos: no se puede desactivar.');return}p.active=!p.active;abSave();clickMenu('Catálogo de productos');abToast('Estado del producto actualizado')}
+function abInput(label,name,value='',type='text',extra=''){return `<label>${label}<input name="${name}" type="${type}" value="${abEsc(value)}" ${extra}></label>`}
+function abSelect(label,name,options,selected=''){const chosen=selected||(options[0]?.id||'');return `<label>${label}<select name="${name}" required>${abOptions(options,chosen)}</select></label>`}
+function abForm(type,id=''){
+ document.getElementById('abModal')?.remove();
+ const edit=!!id, rec=type==='profile'?ab.profile:type==='followup'?null:({product:ab.products,crop:ab.crops,production:ab.productions,offer:ab.offers}[type]||[]).find(x=>x.id===id);let body='',title='';
+ if(type==='profile'){title='Editar perfil';body=abInput('Nombre completo','name',rec.name,'text','required')+abInput('Documento','doc',rec.doc)+abInput('Teléfono','phone',rec.phone)+abInput('Correo electrónico','email',rec.email,'email','required')+abInput('Unidad productiva','farm',rec.farm)+abInput('Vereda','village',rec.village)+abInput('Municipio','municipality',rec.municipality)}
+ if(type==='product'){title=edit?'Editar producto':'Nuevo producto';body=abInput('Nombre','name',rec?.name||'','text','required')+abSelect('Categoría','category',[{id:'Frutal',name:'Frutal'},{id:'Hortaliza',name:'Hortaliza'},{id:'Otro',name:'Otro'}],rec?.category||'')+abSelect('Unidad','unit',[{id:'kg',name:'Kilogramos (kg)'},{id:'unidad',name:'Unidad'}],rec?.unit||'kg')}
+ if(type==='crop'){title=edit?'Editar cultivo':'Nuevo cultivo';body=abInput('Nombre del cultivo','name',rec?.name||'','text','required')+abSelect('Producto asociado','productId',ab.products.filter(p=>p.active||p.id===rec?.productId),rec?.productId||'')+abInput('Fecha de inicio','date',rec?.date||new Date().toISOString().slice(0,10),'date','required')+abInput('Área (hectáreas)','area',rec?.area??'','number','min="0.01" step="any" required')}
+ if(type==='followup'){title='Nuevo seguimiento';body=abInput('Fecha','date',new Date().toISOString().slice(0,10),'date','required')+`<label class="wide">Observaciones<textarea name="notes" required rows="4"></textarea></label>`}
+ if(type==='production'){title=edit?'Editar producción':'Nueva producción';body=abSelect('Cultivo','cropId',ab.crops.filter(c=>c.active||c.id===rec?.cropId),rec?.cropId||'')+abInput('Cantidad producida','qty',rec?.qty||'','number','min="0.01" step="0.01" required')+abInput('Período de cosecha','period',rec?.period||'','text','required')}
+ if(type==='offer'){title=edit?'Editar oferta':'Nueva oferta';body=abSelect('Producción de origen','productionId',ab.productions.map(r=>({id:r.id,name:(abProductOfProduction(r)?.name||'Producto')+' · '+r.period+' ('+r.qty+' '+(abProductOfProduction(r)?.unit||'kg')+')'})),rec?.productionId||'')+abInput('Cantidad disponible','qty',rec?.qty??'','number','min="0" step="0.01" required')+`<label>Estado<select name="active"><option value="true" ${rec?.active!==false?'selected':''}>Disponible</option><option value="false" ${rec?.active===false?'selected':''}>No disponible</option></select></label><p class="wide note">La suma de ofertas de una producción no puede superar su cantidad producida.</p>`}
+ const huByAction={profile:'HU03',product:edit?'HU11':'HU10',crop:edit?'HU06':'HU04',followup:'HU08',production:edit?'HU15':'HU13',offer:edit?'HU18':'HU16'};
+ const hu=traceCatalog[huByAction[type]];
+ const contextual=hu?`<div class="ab-context"><strong>ⓘ Historia de usuario de esta acción</strong><span class="trace-key">${abEsc(hu.jira)}</span><b>${abEsc(hu.hu)}</b> · ${abEsc(hu.title||hu.name||'Historia de usuario')}<div><small>Referencia al backlog de Jira. Demostración académica.</small></div></div>`:'';
+ const actionLabel='Guardar';
+ const m=document.createElement('div');m.className='demo-modal';m.id='abModal';m.innerHTML=`<section role="dialog" aria-modal="true"><h2>${title}</h2><p style="color:#53677f">Datos demostrativos, almacenados solo en este navegador.</p>${contextual}<form id="abEditForm"><div class="demo-form">${body}</div><div id="abFormError" class="demo-error" role="alert"></div><div class="demo-actions"><button type="button" class="secondary" onclick="abClose()">Cancelar</button><button type="submit" class="primary">${actionLabel}</button></div></form></section>`;document.body.appendChild(m);m.querySelector('form').onsubmit=e=>{e.preventDefault();abSubmit(type,id,new FormData(e.target))};m.querySelector('form').addEventListener('invalid',e=>{const error=m.querySelector('#abFormError');if(error)error.textContent='Revisa los campos obligatorios y sus formatos antes de continuar.'},true);
+ const mapping={profile:['HU03'],product:[edit?'HU11':'HU10'],crop:[edit?'HU06':'HU04'],followup:['HU08'],production:[edit?'HU15':'HU13'],offer:[edit?'HU18':'HU16']};updateTrace(title,mapping[type]);
+}
+function abClose(){document.getElementById('abModal')?.remove();const b=document.querySelector('.navbtn.active');if(b)updateTrace(b.textContent)}
+function abSubmit(type,id,f){const v=k=>String(f.get(k)||'').trim(),num=k=>Number(v(k));const fail=msg=>{document.getElementById('abFormError').textContent=msg};let rec;
+ if(type==='profile'){if(!v('name')||!v('email'))return fail('Nombre y correo son obligatorios.');Object.assign(ab.profile,Object.fromEntries(['name','doc','phone','email','farm','village','municipality'].map(k=>[k,v(k)])))}
+ if(type==='product'){if(!v('name')||!v('category')||!v('unit'))return fail('Completa los campos obligatorios.');if(ab.products.some(p=>p.name.toLowerCase()===v('name').toLowerCase()&&p.id!==id))return fail('El producto ya existe.');rec=ab.products.find(x=>x.id===id);if(rec)Object.assign(rec,{name:v('name'),category:v('category'),unit:v('unit')});else ab.products.push({id:abId(),name:v('name'),category:v('category'),unit:v('unit'),active:true})}
+ if(type==='crop'){if(!v('name')||!abProd(v('productId'))||!v('date')||num('area')<=0)return fail('Completa un nombre, producto activo, fecha y área positiva.');rec=ab.crops.find(x=>x.id===id);if(rec)Object.assign(rec,{name:v('name'),productId:v('productId'),date:v('date'),area:num('area')});else ab.crops.push({id:abId(),name:v('name'),productId:v('productId'),date:v('date'),area:num('area'),active:true})}
+ if(type==='followup'){if(!v('date')||!v('notes'))return fail('Completa fecha y observaciones.');ab.followups.push({id:abId(),cropId:id,date:v('date'),notes:v('notes')})}
+ if(type==='production'){if(!abCrop(v('cropId'))||!v('period')||num('qty')<=0)return fail('Selecciona cultivo, período y cantidad positiva.');rec=ab.productions.find(x=>x.id===id);const used=ab.offers.filter(o=>o.productionId===id).reduce((s,o)=>s+o.qty,0);if(rec&&num('qty')<used)return fail('La producción no puede ser menor que las cantidades ya ofertadas ('+used+').');if(rec)Object.assign(rec,{cropId:v('cropId'),qty:num('qty'),period:v('period')});else ab.productions.push({id:abId(),cropId:v('cropId'),qty:num('qty'),period:v('period')})}
+ if(type==='offer'){const prod=abProduction(v('productionId'));if(!prod||!Number.isFinite(num('qty'))||num('qty')<0)return fail('Selecciona una producción y una cantidad válida.');const used=ab.offers.filter(o=>o.productionId===prod.id&&o.id!==id).reduce((s,o)=>s+o.qty,0);if(used+num('qty')>prod.qty)return fail('Cantidad máxima disponible: '+Math.max(0,prod.qty-used)+' (producción total: '+prod.qty+').');if(v('active')==='true'&&num('qty')===0)return fail('Una oferta disponible debe tener cantidad mayor que cero.');rec=ab.offers.find(x=>x.id===id);if(rec)Object.assign(rec,{productionId:prod.id,qty:num('qty'),active:v('active')==='true'});else ab.offers.push({id:abId(),productionId:prod.id,qty:num('qty'),active:v('active')==='true'})}
+ abSave();abClose();const page={profile:'Mi perfil',product:'Catálogo de productos',crop:'Mis cultivos',followup:'Mis cultivos',production:'Producción',offer:'Mis ofertas'}[type];clickMenu(page);if(type==='followup')abFollowups(id);abToast(type==='crop'&&!id?'Cultivo registrado correctamente':type==='product'&&!id?'Producto registrado correctamente':type==='production'&&!id?'Producción registrada correctamente':type==='offer'&&!id?'Oferta publicada correctamente':'Información actualizada correctamente');
+}
+function abId(){return 'd'+Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+// No autenticación real: selección explícita de roles demostrativos.
+document.getElementById('traceLaunch').textContent='ⓘ Historias de usuario';
 </script>
 </body>
 </html>
